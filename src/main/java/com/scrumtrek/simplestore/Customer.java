@@ -11,16 +11,20 @@ public class Customer {
 		m_Name = name;
 	}
 
+	public String getName() {
+		return m_Name;
+	}
+
 	public void addRental(Rental arg) {
 		m_Rentals.add(arg);
 	}
 
 	public String generateStatement()
 	{
+		StatementFormatter formatter = new StatementFormatter(this);
+
 		double totalAmount = 0;
 		int frequentRenterPoints = 0;
-				
-		String result = "Rental record for " + m_Name + "\n";
 		
 		for(Rental each: m_Rentals) {
 			frequentRenterPoints++;
@@ -31,13 +35,15 @@ public class Customer {
 			}
 
 			double thisAmount = each.calculateAmount();
-			result += "\t" + each.getMovie().getTitle() + "\t" + thisAmount + "\n";
+			formatter.appendRental(each, thisAmount);
+
 			totalAmount += thisAmount;
 		}
 
-		result += "Amount owed is " + totalAmount + "\n";
-		result += "You earned " + frequentRenterPoints + " frequent renter points.";
-		return result;
+		formatter.appendTotalAmount(totalAmount);
+		formatter.appendRenterPoints(frequentRenterPoints);
+
+		return formatter.getFormattedStatement();
 	}
 }
 
