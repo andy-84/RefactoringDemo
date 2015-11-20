@@ -15,7 +15,7 @@ public class Customer {
 		m_Rentals.add(arg);
 	}
 
-	public String Statement()
+	public String generateStatement()
 	{
 		double totalAmount = 0;
 		int frequentRenterPoints = 0;
@@ -23,22 +23,18 @@ public class Customer {
 		String result = "Rental record for " + m_Name + "\n";
 		
 		for(Rental each: m_Rentals) {
-			// Add frequent renter points
 			frequentRenterPoints++;
 
-			// Add bonus for a two-day new-release rental
 			if (each.getIsBonusRental())
 			{
-				frequentRenterPoints ++;
+				frequentRenterPoints++;
 			}
 
-			// Show figures for this rental
 			double thisAmount = each.calculateAmount();
 			result += "\t" + each.getMovie().getTitle() + "\t" + thisAmount + "\n";
 			totalAmount += thisAmount;
 		}
 
-		// Add footer lines
 		result += "Amount owed is " + totalAmount + "\n";
 		result += "You earned " + frequentRenterPoints + " frequent renter points.";
 		return result;

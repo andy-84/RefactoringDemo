@@ -50,5 +50,11 @@ public class Rental {
 		}
 		return resultAmount;
 	}
+
+	private double getMinDayConstrainedAmountWithMultiplier(int minDayConstraint, double dayMultiplier)
+	{
+		// todo if real bug for PriceCodes.Childrens
+		return 0;
+	}
 }
 

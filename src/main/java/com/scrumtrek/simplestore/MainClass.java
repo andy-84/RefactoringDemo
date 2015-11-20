@@ -1,7 +1,13 @@
 package com.scrumtrek.simplestore;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 class MainClass {
-	 static void Main(String[] args) {
+	private MainClass() {
+	}
+
+	 static void Main() {
 		// Create movies
 		Movie movCinderella = new Movie("Cinderella", PriceCodes.Childrens);
 		Movie movStarWars = new Movie("Star Wars", PriceCodes.Regular);
@@ -21,10 +27,10 @@ class MainClass {
 		custMickeyMouse.addRental(rental3);
 
 		// Generate invoice
-		String statement = custMickeyMouse.Statement();
+		String statement = custMickeyMouse.generateStatement();
 
 		// Print the statement
-		System.out.println(statement);		
+		 Logger.getGlobal().log(Level.INFO, statement);
 	}
 }
 
