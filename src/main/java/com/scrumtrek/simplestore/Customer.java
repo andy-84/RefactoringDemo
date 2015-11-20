@@ -23,31 +23,6 @@ public class Customer {
 		String result = "Rental record for " + m_Name + "\n";
 		
 		for(Rental each: m_Rentals) {
-			double thisAmount = 0;
-			
-			// Determine amounts for each line
-			switch(each.getMovie().getPriceCode()) {
-				case Regular:
-					thisAmount += 2;
-					if (each.getDaysRented() > 2)
-					{
-						thisAmount += (each.getDaysRented() - 2) * 1.5;
-					}
-					break;
-	
-				case NewRelease:
-					thisAmount += each.getDaysRented() * 3;
-					break;
-	
-				case Childrens:
-					thisAmount += 1.5;
-					if (each.getDaysRented() > 3)
-					{
-						thisAmount = (each.getDaysRented() - 3) * 1.5;
-					}
-					break;
-			}
-
 			// Add frequent renter points
 			frequentRenterPoints++;
 
@@ -58,6 +33,7 @@ public class Customer {
 			}
 
 			// Show figures for this rental
+			double thisAmount = each.calculateAmount();
 			result += "\t" + each.getMovie().getTitle() + "\t" + thisAmount + "\n";
 			totalAmount += thisAmount;
 		}
