@@ -11,12 +11,7 @@ public class Customer {
 		m_Name = name;
 	}
 
-	public String getName() {
-		return m_Name;
-	}
-
-
-	public void addRental(Rental arg){
+	public void addRental(Rental arg) {
 		m_Rentals.add(arg);
 	}
 

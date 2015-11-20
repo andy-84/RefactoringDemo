@@ -4,9 +4,6 @@ import com.scrumtrek.simplestore.Rental;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- * Created by user on 19.11.2015.
- */
 public class RentalTest {
     @Test
     public void ShouldReturnValidRentalDays() {

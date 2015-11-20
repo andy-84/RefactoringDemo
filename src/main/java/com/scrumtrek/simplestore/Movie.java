@@ -9,12 +9,8 @@ public class Movie {
 		m_PriceCode = priceCode;
 	}
 
-	public PriceCodes getPriceCode()	{
+	public PriceCodes getPriceCode() {
 		return m_PriceCode;
-	}
-	
-	public void setPriceCode(PriceCodes value) {
-		m_PriceCode = value;
 	}
 
 	public String getTitle() {
