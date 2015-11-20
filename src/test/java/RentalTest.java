@@ -30,6 +30,36 @@ public class RentalTest {
     }
 
     @Test
+    public void ShouldBeBonusRental()
+    {
+        Rental testee = createRentalTestee(PriceCodes.NewRelease, 10);
+        assertTrue(testee.getIsBonusRental());
+    }
+
+    @Test
+    public void ShouldNotBeBonusRentalForNonNewReleasePriceCode()
+    {
+        {
+            Rental testee = createRentalTestee(PriceCodes.Regular, 10);
+            assertFalse(testee.getIsBonusRental());
+        }
+
+        {
+            Rental testee = createRentalTestee(PriceCodes.Childrens, 10);
+            assertFalse(testee.getIsBonusRental());
+        }
+    }
+
+    @Test
+    public void ShouldNotBeBonusRentalForMinDays()
+    {
+        int minDaysForNotBonus = 1;
+
+        Rental testee = createRentalTestee(PriceCodes.Regular, minDaysForNotBonus);
+        assertFalse(testee.getIsBonusRental());
+    }
+
+    @Test
     public void ShouldReturnValidAmountForRegularPriceCodeWithoutDayMultiplier() {
         Rental testee = createRentalTestee(PriceCodes.Regular, 2);
 

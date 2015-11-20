@@ -3,10 +3,12 @@ package com.scrumtrek.simplestore;
 public class Rental {
 	private Movie m_Movie;
 	private int m_DaysRented;
+	private boolean m_isBonusRental;
 
 	public Rental(Movie movie, int daysRented) {
 		m_Movie = movie;
 		m_DaysRented = daysRented;
+		m_isBonusRental = (m_Movie.getPriceCode() == PriceCodes.NewRelease) && (m_DaysRented > 1);
 	}
 
 	public int getDaysRented() {
@@ -15,6 +17,11 @@ public class Rental {
 
 	public Movie getMovie() {
 		return m_Movie;
+	}
+
+	public boolean getIsBonusRental()
+	{
+		return m_isBonusRental;
 	}
 
 	public double calculateAmount()
